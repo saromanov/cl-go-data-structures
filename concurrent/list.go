@@ -22,3 +22,15 @@ func (l *List) PushBack(v interface{}) *list.Element {
 	defer l.mutex.Unlock()
 	return l.l.PushBack(v)
 }
+
+func (l *List) PushFront(v interface{}) *list.Element {
+	l.mutex.Lock()
+	defer l.mutex.Unlock()
+	return l.l.PushFront(v)
+}
+
+func (l *List) Len() int {
+	l.mutex.Lock()
+	defer l.mutex.Unlock()
+	return l.l.Len()
+}
