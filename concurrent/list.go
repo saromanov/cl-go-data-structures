@@ -34,3 +34,15 @@ func (l *List) Len() int {
 	defer l.mutex.Unlock()
 	return l.l.Len()
 }
+
+func (l *List) Front()*list.Element {
+	l.mutex.Lock()
+	defer l.mutex.Unlock()
+	return l.l.Front()
+}
+
+func (l *List) Back() *list.Element {
+	l.mutex.Lock()
+	defer l.mutex.Unlock()
+	return l.l.Back()
+}
