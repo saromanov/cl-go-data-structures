@@ -18,6 +18,8 @@ type Queue struct {
 	mutex* sync.RWMutex
 }
 
+
+//NewQueue provides create of new queue object
 func NewQueue()*Queue {
 	q := new(Queue)
 	q.item = []*QueueItem{}
@@ -26,6 +28,7 @@ func NewQueue()*Queue {
 	return q
 }
 
+//Insert provides append new element to queue
 func (q* Queue) Insert(elem interface{}) {
 	q.mutex.RLock()
 	defer q.mutex.RUnlock()
@@ -33,6 +36,8 @@ func (q* Queue) Insert(elem interface{}) {
 	atomic.AddInt32(&q.count, 1)
 }
 
+
+//Pop provides getting first element from queue
 func (q *Queue) Pop()(interface{}, error) {
 	if q.count == 0 {
 		return nil, errors.New("Queue is empty")
@@ -46,6 +51,8 @@ func (q *Queue) Pop()(interface{}, error) {
 
 }
 
+
+//Size returns cpunt of elements in queue
 func (q * Queue) Size() int32 {
 	q.mutex.Lock()
 	defer q.mutex.Unlock()
