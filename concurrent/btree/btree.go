@@ -33,6 +33,13 @@ func (bt *BinaryTree) Insert(item int) {
 	}
 }
 
+func(bt *BinaryTree) Remove(item int) {
+	if bt.node.root == nil {
+		return nil
+	}
+
+	if bt.node.left == nil && bt.node.right == nil
+}
 func (bt *BinaryTree) createNode(item int)*Node {
 	return &Node{nil, nil, nil, item}
 }
