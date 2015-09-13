@@ -36,3 +36,11 @@ func (d *Dict) Remove(key interface{}) error {
 	d.mutex.Unlock()
 	return nil
 }
+
+//Exists returns true if dict contains key and false in otherwise
+func (d *Dict) Exists(key interface{}) bool {
+	d.mutex.Lock()
+	defer d.mutex.Unlock()
+	_, ok := d.data[key]
+	return ok
+}
