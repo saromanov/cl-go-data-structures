@@ -17,6 +17,7 @@ type BinaryTree struct {
 
 func New()*BinaryTree {
 	tree := new(BinaryTree)
+	tree.node = createNode(0)
 	return tree
 }
 
@@ -25,23 +26,25 @@ func (bt *BinaryTree) Insert(item int) {
 	bt.insert(bt.node.root, item)
 }
 
-func (bt *BinaryTree) insert(node *Node, item int) {
-	if bt.node == nil {
-		node := bt.createNode(item)
-		bt.node = node
-	} else {
-		if item < bt.node.item {
-			bt.node.left = bt.createNode(item)
-		} else if item > bt.node.item {
-			bt.node.right = bt.createNode(item)
-		}
-	}
-}
-
 //Remove provides removing item from tree
 func(bt *BinaryTree) Remove(item int) {
 	bt.remove(bt.node.root, item)
 }
+
+//helful method for the insert
+func (bt *BinaryTree) insert(node *Node, item int) {
+	if bt.node == nil {
+		node := createNode(item)
+		bt.node = node
+	} else {
+		if item < bt.node.item {
+			bt.node.left = createNode(item)
+		} else if item > bt.node.item {
+			bt.node.right = createNode(item)
+		}
+	}
+}
+
 
 //helful method for removing data
 func (bt *BinaryTree) remove(node *Node, item int)(c *Node) {
@@ -58,6 +61,6 @@ func (bt *BinaryTree) remove(node *Node, item int)(c *Node) {
 }
 
 //helpful method for create node
-func (bt *BinaryTree) createNode(item int)*Node {
+func createNode(item int)*Node {
 	return &Node{nil, nil, nil, item}
 }
