@@ -11,8 +11,9 @@ type Dict struct {
 	data map[interface{}]interface{}
 }
 
-func NewDict()*Dict {
+func New() *Dict {
 	dict := new(Dict)
+	dict.data = map[interface{}]interface{}{}
 	dict.mutex = sync.RWMutex{}
 	return dict
 }
