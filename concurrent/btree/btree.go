@@ -31,6 +31,10 @@ func(bt *BinaryTree) Remove(item int) {
 	bt.remove(bt.node.root, item)
 }
 
+func (bt *BinaryTree) Find(item int) bool {
+	return bt.find(bt.node, item)
+}
+
 //helful method for the insert
 func (bt *BinaryTree) insert(node *Node, item int) {
 	if bt.node == nil {
@@ -58,6 +62,21 @@ func (bt *BinaryTree) remove(node *Node, item int)(c *Node) {
 		return
 	}
 	return
+}
+
+//helful method for finding element
+func (bt *BinaryTree) find(node *Node, item int) bool {
+	if node == nil {
+		return false
+	} else {
+		if item < bt.node.item {
+			return bt.find(node.left, item)
+		} else if item > bt.node.item {
+			return bt.find(node.right, item)
+		} else {
+			return true
+		}
+	}
 }
 
 //helpful method for create node
