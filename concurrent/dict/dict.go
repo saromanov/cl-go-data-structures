@@ -17,13 +17,14 @@ func NewDict()*Dict {
 	return dict
 }
 
+//Add provides append data to the dict
 func (d *Dict) Add(key, value interface{}) {
 	d.mutex.Lock()
 	defer d.mutex.Unlock()
 	d.data[key] = value
 }
 
-
+//Remove provides removing data from the dict
 func (d *Dict) Remove(key interface{}) error {
 	d.mutex.Lock()
 	item, ok := d.data[key]
