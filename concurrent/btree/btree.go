@@ -35,10 +35,12 @@ func (bt *BinaryTree) Insert(item int) {
 	}
 }
 
+//Remove provides removing item from tree
 func(bt *BinaryTree) Remove(item int) {
 	bt.remove(bt.node.root, item)
 }
 
+//helful method for removing data
 func (bt *BinaryTree) remove(node *Node, item int)(c *Node) {
 	if bt.node.root == nil {
 		return
@@ -51,6 +53,8 @@ func (bt *BinaryTree) remove(node *Node, item int)(c *Node) {
 	}
 	return
 }
+
+//helpful method for create node
 func (bt *BinaryTree) createNode(item int)*Node {
 	return &Node{nil, nil, nil, item}
 }
