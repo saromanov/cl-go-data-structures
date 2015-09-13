@@ -22,15 +22,18 @@ func New()*BinaryTree {
 
 //Insert provides append new item
 func (bt *BinaryTree) Insert(item int) {
+	bt.insert(bt.node.root, item)
+}
 
+func (bt *BinaryTree) insert(node *Node, item int) {
 	if bt.node == nil {
 		node := bt.createNode(item)
 		bt.node = node
 	} else {
 		if item < bt.node.item {
 			bt.node.left = bt.createNode(item)
-		} else {
-
+		} else if item > bt.node.item {
+			bt.node.right = bt.createNode(item)
 		}
 	}
 }
