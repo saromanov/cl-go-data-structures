@@ -53,3 +53,8 @@ func (d *Dict) Get(key interface{}) (interface{}, error) {
 
 	return nil, errors.New("Element is not found")
 }
+
+//Size return current size of the dict
+func (d *Dict) Size() int {
+	return len(d.data)
+}
