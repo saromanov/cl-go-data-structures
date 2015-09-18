@@ -2,7 +2,9 @@ package dict
 
 import (
 	"errors"
+	"math/rand"
 	"sync"
+	"time"
 )
 
 type Dict struct {
@@ -52,6 +54,23 @@ func (d *Dict) Get(key interface{}) (interface{}, error) {
 	}
 
 	return nil, errors.New("Element is not found")
+}
+
+//RandomGet provides getting value by random key
+func (d *Dict) RandomGet() interface{} {
+	d.mutex.Lock()
+	defer d.mutex.Unlock()
+	rand.Seed(time.Now().UTC().UnixNano())
+	item := rand.Intn(d.Size())
+	counter := 0
+	for _, value := range d.data {
+		if counter == item {
+			return value
+		}
+		counter++
+	}
+
+	return nil
 }
 
 //Size return current size of the dict
