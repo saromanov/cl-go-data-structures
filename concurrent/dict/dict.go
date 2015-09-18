@@ -1,14 +1,13 @@
 package dict
 
-import
-(
-	"sync"
+import (
 	"errors"
+	"sync"
 )
 
 type Dict struct {
 	mutex sync.RWMutex
-	data map[interface{}]interface{}
+	data  map[interface{}]interface{}
 }
 
 func New() *Dict {
@@ -44,4 +43,13 @@ func (d *Dict) Exists(key interface{}) bool {
 	defer d.mutex.Unlock()
 	_, ok := d.data[key]
 	return ok
+}
+
+//Get provides getting element by the key
+func (d *Dict) Get(key interface{}) (interface{}, error) {
+	if d.Exists(key) {
+		return d.data[key], nil
+	}
+
+	return nil, errors.New("Element is not found")
 }
