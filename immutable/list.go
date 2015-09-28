@@ -44,7 +44,7 @@ func (l *List) Front() *List {
 	defer l.mutex.Unlock()
 	newlist := NewList()
 	newlist = l
-	newlist.l.Front()
+	newlist.l.Remove(newlist.l.Front())
 	return newlist
 }
 
@@ -54,20 +54,20 @@ func (l *List) Back() *List {
 	defer l.mutex.Unlock()
 	newlist := NewList()
 	newlist = l
-	newlist.l.Back()
+	newlist.l.Remove(newlist.l.Back())
 	return newlist
 }
 
 //Front provides skipping element from front
-func (l *List) HeadFront() *list.Element {
+func (l *List) HeadFront() interface{} {
 	l.mutex.Lock()
 	defer l.mutex.Unlock()
-	return l.l.Back()
+	return l.l.Back().Value
 }
 
 //Front provides skipping element from front
-func (l *List) HeadBack() *list.Element {
+func (l *List) HeadBack() interface{} {
 	l.mutex.Lock()
 	defer l.mutex.Unlock()
-	return l.l.Front()
+	return l.l.Front().Value
 }
