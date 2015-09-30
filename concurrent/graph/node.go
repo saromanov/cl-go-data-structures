@@ -36,9 +36,9 @@ func (n *Node) InnodesLen() int {
 
 //Find provides finding nodes from Outnodes
 func (n *Node) Find(title string)*Node {
-	for _, n := range n.Outnodes {
-		if n.Title == title {
-			return n
+	for _, node := range n.Outnodes {
+		if node.Title == title {
+			return node
 		}
 	}
 
