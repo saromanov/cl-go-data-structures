@@ -54,7 +54,7 @@ func (node *Graph) AddEdge(innode, outnode string) error {
 	}
 
 	node.nodes[innode].AddOutnode(node2)
-	node.nodes[outnode].AddInnode(node1)
+	node.nodes[outnode].AddOutnode(node1)
 	return nil
 }
 
