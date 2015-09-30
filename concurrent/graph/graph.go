@@ -43,8 +43,8 @@ func (node *Graph) AddEdge(innode, outnode string) error {
 		return fmt.Errorf("Node %s is not found", outnode)
 	}
 
-	node.nodes[innode].AddOutnode(node1)
-	node.nodes[outnode].AddInnode(node2)
+	node.nodes[innode].AddOutnode(node2)
+	node.nodes[outnode].AddInnode(node1)
 	return nil
 }
 
@@ -54,6 +54,5 @@ func (node *Graph) HasEdge(innode, outnode string) bool {
 	if !ok {
 		return false
 	}
-
 	return node1.HasEdge(outnode)
 }
