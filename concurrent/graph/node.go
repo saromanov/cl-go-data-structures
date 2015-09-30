@@ -45,6 +45,16 @@ func (n *Node) Find(title string)*Node {
 	return nil
 }
 
+//HasEdge provides finding node in outnodes
+func (n *Node) HasEdge(title string) bool {
+	result := n.Find(title)
+	if result != nil {
+		return true
+	}
+
+	return false
+}
+
 //Copy nodes returns copy of current node
 func (node *Node) Copy()*Node {
 	newnode := NewNode(node.Title)

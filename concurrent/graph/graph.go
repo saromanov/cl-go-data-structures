@@ -47,3 +47,13 @@ func (node *Graph) AddEdge(innode, outnode string) error {
 	node.nodes[outnode].AddInnode(node2)
 	return nil
 }
+
+//HasEdge return true if innode and outnode is connected
+func (node *Graph) HasEdge(innode, outnode string) bool {
+	node1, ok := node.nodes[innode]
+	if !ok {
+		return false
+	}
+
+	return node1.HasEdge(outnode)
+}
