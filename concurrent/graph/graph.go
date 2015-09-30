@@ -18,6 +18,7 @@ type Graph struct {
 	nodes map[string]*Node
 }
 
+//NewGraph provides construction of the graph object
 func NewGraph() *Graph {
 	graph := new(Graph)
 	graph.nodes = map[string]*Node{}
@@ -30,6 +31,7 @@ func (node *Graph) AddNode(title string) error {
 	return nil
 }
 
+//AddEdge provides connect tow nodes
 func (node *Graph) AddEdge(innode, outnode string) error {
 	node1, ok := node.nodes[innode]
 	if !ok {
