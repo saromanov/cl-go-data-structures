@@ -31,6 +31,16 @@ func (node *Graph) AddNode(title string) error {
 	return nil
 }
 
+//HasNode return true if node is registred and false otherwise
+func (node *Graph) HasNode(title string) bool {
+	_, ok := node.nodes[title]
+	if !ok {
+		return false
+	}
+
+	return true
+}
+
 //AddEdge provides connect tow nodes
 func (node *Graph) AddEdge(innode, outnode string) error {
 	node1, ok := node.nodes[innode]
